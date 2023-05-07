@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/test21312.unity
     guid: 3e4b74599a7c8a74b83d6583b6f506fb
   - enabled: 0
-    path: "Assets/Scenes/\u011F\u015F\u011Fi\u011F.unity"
+    path: Assets/Scenes/Beach Scene.unity
     guid: e1392193cbb0cbe4881a87aa2c94d9a0
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: df1c76b16310bda4598bf560c5fd3b1f,
