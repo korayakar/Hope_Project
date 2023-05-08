@@ -7,6 +7,7 @@ public class SimplePlayerMovement : MonoBehaviourPunCallbacks
 {
     public float speed = 1f;
     public float rspeed = 5f;
+    public ParticleSystem ripple;
 
 
     // Start is called before the first frame update
@@ -43,5 +44,46 @@ public class SimplePlayerMovement : MonoBehaviourPunCallbacks
 	            transform.Rotate(0f, rspeed * Time.deltaTime, 0f);
             }
           }
+   
+            //CreateRipple(-180, 180, 3, 2, 2, 2);
+        
+    }
+
+    void CreateRipple (int Start, int End, int Delta, float Speed, float Size, float Lifetime)
+    {
+        Vector3 forward = ripple.transform.eulerAngles;
+        forward.y = Start;
+        ripple.transform.eulerAngles = forward;
+
+        for (int i = Start; i < End; i += Delta)
+        {
+            ripple.Emit(transform.position + ripple.transform.forward * 0.5f, ripple.transform.forward * Speed, Size, Lifetime, Color.white);
+            ripple.transform.eulerAngles += Vector3.up * 3;
+        }
+    }
+
+    private void OnTriggerEnter (Collider other)
+    {
+        if (other.gameObject.layer == 4)
+        {
+            CreateRipple(-180, 180, 3, 2, 2, 2);
+        }
+    }
+
+    private void OnTriggerStay (Collider other)
+    {
+        if (other.gameObject.layer == 4)
+        {
+            int y = (int)transform.eulerAngles.y;
+            CreateRipple(y-90, y+90, 3, 5, 2, 1);
+        }
+    }
+
+    private void OnTriggerExit (Collider other)
+    {
+        if (other.gameObject.layer == 4)
+        {
+            CreateRipple(-180, 180, 3, 2, 2, 2);
+        }
     }
 }
