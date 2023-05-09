@@ -51,8 +51,8 @@ Material:
     - _Normal_Strength: 0.4
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Reflection_Refraction: 0
-    - _Refraction: 0.04
+    - _Reflection_Refraction: 0.15
+    - _Refraction: 0.22
     - _Smoothness: 0.781
     - _Water_Lerp: 0.5
     - _Wave: 0.2
