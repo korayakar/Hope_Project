@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Lobby Scene12.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Playground_v1 su3.unity
     guid: aaa8fbf0953f2d04a96d9c5a49d709be
   - enabled: 0
     path: Assets/Scenes/test21312.unity
     guid: 3e4b74599a7c8a74b83d6583b6f506fb
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Beach Scene.unity
     guid: e1392193cbb0cbe4881a87aa2c94d9a0
   m_configObjects:
