@@ -4,20 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ExitButton : MonoBehaviour
 {
-    public Canvas signUpCanvas;
-    void Start()
+    public Canvas mainCanvas;
+    public Canvas loginCanvas;
+    public Button exitButton;
+  public void Start()
     {
-        Button ExitButton = GetComponent<Button>();
-
-        ExitButton.onClick.AddListener(HideCanvas);
+    exitButton = GetComponent<Button>();
+        
+    exitButton.onClick.AddListener(hideCanvas);
     }
 
-    void HideCanvas()
+    public void hideCanvas()
     {
-        signUpCanvas.gameObject.SetActive(false);
+    mainCanvas.gameObject.SetActive(false);
+    loginCanvas.gameObject.SetActive(false);
     }
-    void Update()
-    {
 
-    }
+
 }

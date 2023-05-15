@@ -18,16 +18,22 @@ public class Write : MonoBehaviour
     private MySqlConnection MS_Connection;
     private MySqlCommand MS_Command;
     string query;
+    public Button exitbutton;
 
+    void Start()
+    {
+        exitbutton.gameObject.SetActive(false);
+    }
 
-    public bool sendInfo()
+    public void sendInfo()
     {
         connection();
 
-        if(name.text.ToString() == "")
+        if(name.text.ToString() == "" || name.text == null)
         {
             nameError.text = "Name cannot be null!";
-            return false;
+            exitbutton.gameObject.SetActive(false);
+            return;
         }
 
         else
@@ -37,7 +43,7 @@ public class Write : MonoBehaviour
         if (Surnames.text.ToString() == "")
         {
             surnameError.text = "Surname cannot be null!";
-            return false;
+            return;
         }
         else
         {
@@ -46,7 +52,7 @@ public class Write : MonoBehaviour
         if (ID.text.ToString() == "")
         {
             IDmessage.text = "ID cannot be empty!";
-            return false;
+            return ;
         }
 
         else
@@ -57,35 +63,51 @@ public class Write : MonoBehaviour
         if (!(isNumber(ID.text.ToString())))
         {
             IDmessage.text = "not a number!";
-            return false;
+            return ;
         }
         else IDmessage.text = "";
         if (long.Parse(ID.text) % 2 != 0 || ID.text.ToString().Length != 11)
         {
             IDmessage.text = "not a valid ID!";
-            return false;
+            return ;
         }
         
         query = "insert into MyTable(Name, Surname, ID) values('" + name.text + "' , '" + Surnames.text + "', '" + ID.text + "');";
 
         MS_Command = new MySqlCommand(query, MS_Connection);
 
+        if (sendMessage()) {
+            exitbutton.gameObject.SetActive(true);
+        }
+        else
+        {
+            exitbutton.gameObject.SetActive(false);
+        }
+       
 
+
+
+    }
+    public bool sendMessage()
+    {
         try
         {
-            MS_Command.ExecuteNonQuery();
-            Debug.Log("hello");
-            successfulMsg.text = "Successfully signed up!";
-            MS_Connection.Close();
-            return true;
+            int a = MS_Command.ExecuteNonQuery();
+            if(a != -1)
+            {
+                Debug.Log("hello");
+                successfulMsg.text = "Successfully signed up!";
+                MS_Connection.Close();
+                return true;
+            }
+            return false;
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             successfulMsg.text = "ID already used!";
             return false;
         }
-      
-
+        return false;
     }
    
 
