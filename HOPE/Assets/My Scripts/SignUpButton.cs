@@ -10,6 +10,7 @@ public class SignUpButton : MonoBehaviour
     void Start()
     {
         Button signUpButton = GetComponent<Button>();
+        Button exitbutton = GetComponent<Button>();
         exitbutton.gameObject.SetActive(false);
         
         signUpButton.onClick.AddListener(showButton);
