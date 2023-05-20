@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.kink3d.mirrors": "file:C:/Users/Administrator/Desktop/kMirrors-master",
+    "com.kink3d.mirrors": "file:kMirrors-master",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.collab-proxy": "1.17.6",
