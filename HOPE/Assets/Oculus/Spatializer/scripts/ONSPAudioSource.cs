@@ -46,8 +46,9 @@ public class ONSPAudioSource : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void OnBeforeSceneLoadRuntimeMethod()
     {
+   
 #if !ONSP_UNSUPPORTED_PLATFORM
-        OSP_SetGlobalVoiceLimit(ONSPSettings.Instance.voiceLimit);
+        // OSP_SetGlobalVoiceLimit(ONSPSettings.Instance.voiceLimit);
 #endif
     }
 
