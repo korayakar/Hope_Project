@@ -8,7 +8,7 @@ public class Leave : MonoBehaviour
   public void Leave_Room()
     {
         PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel(0);
+        PhotonNetwork.LoadLevel(1);
 
     }
 }

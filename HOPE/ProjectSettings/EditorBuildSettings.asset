@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Relaxation Room.unity
     guid: fefe56ac784996643b013ab7e6e1ccc1
+  - enabled: 1
+    path: Assets/Scenes/Farm.unity
+    guid: 6495ab2bd2beb4784b2ac3b8f2196757
   - enabled: 0
     path: Assets/Scenes/test.unity
     guid: 007e8503c7798174b85beea4ed9123d0
