@@ -541,6 +541,7 @@ GameObject:
   - component: {fileID: 181392190}
   - component: {fileID: 181392189}
   - component: {fileID: 181392188}
+  - component: {fileID: 181392192}
   m_Layer: 5
   m_Name: 'Log in '
   m_TagString: Untagged
@@ -606,7 +607,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -631,7 +632,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 423577336}
         m_TargetAssemblyTypeName: Write2, Assembly-CSharp
         m_MethodName: sendInfo
         m_Mode: 1
@@ -682,6 +683,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181392186}
   m_CullTransparentMesh: 1
+--- !u!95 &181392192
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181392186}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f108e988a00d6d74aadb6878132db375, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &254909149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1322,53 @@ MonoBehaviour:
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!1 &265402679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 265402681}
+  - component: {fileID: 265402680}
+  m_Layer: 0
+  m_Name: ExitButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &265402680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265402679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6abaaeeff70064daa9efabac8908b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCanvas: {fileID: 2009898643}
+  loginCanvas: {fileID: 1867272236}
+  exitButton: {fileID: 2093624535}
+--- !u!4 &265402681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265402679}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -36.91642, y: 0.48709112, z: 5.723661}
+  m_LocalScale: {x: 0.30069998, y: 0.28437, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &266576224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,6 +1529,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281377601}
   m_CullTransparentMesh: 1
+--- !u!1 &329528251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 329528253}
+  - component: {fileID: 329528252}
+  m_Layer: 0
+  m_Name: LoginSignUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &329528252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329528251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b2911defd247549bc2fb23b132b34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signupCanvas: {fileID: 2009898643}
+  loginCanvas: {fileID: 1867272236}
+  loginButton: {fileID: 1844274965}
+--- !u!4 &329528253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329528251}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -35.643, y: 0.33, z: 7.962434}
+  m_LocalScale: {x: 0.30069998, y: 0.28437, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &354876794
 GameObject:
   m_ObjectHideFlags: 0
@@ -2206,6 +2321,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381586489}
   m_CullTransparentMesh: 1
+--- !u!1 &423577335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 423577337}
+  - component: {fileID: 423577336}
+  m_Layer: 0
+  m_Name: Write2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &423577336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423577335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c0fff5d8646c94a896956668589dcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: {fileID: 902037222}
+  IDmessage: {fileID: 991986125}
+  loginCanvas: {fileID: 1867272236}
+  signUpCanvas: {fileID: 2009898643}
+  signUpButton: {fileID: 699604389}
+  isLogin: 0
+--- !u!4 &423577337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423577335}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -35.643, y: 0.33, z: 7.962434}
+  m_LocalScale: {x: 0.30069998, y: 0.28437, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &461235607
 GameObject:
   m_ObjectHideFlags: 0
@@ -3125,6 +3290,7 @@ GameObject:
   - component: {fileID: 699604390}
   - component: {fileID: 699604389}
   - component: {fileID: 699604388}
+  - component: {fileID: 699604392}
   m_Layer: 5
   m_Name: Sign Up Button
   m_TagString: Untagged
@@ -3190,7 +3356,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3215,7 +3381,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 423577336}
         m_TargetAssemblyTypeName: Write2, Assembly-CSharp
         m_MethodName: changeCanvas
         m_Mode: 1
@@ -3266,6 +3432,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699604386}
   m_CullTransparentMesh: 1
+--- !u!95 &699604392
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699604386}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f108e988a00d6d74aadb6878132db375, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &707245607
 GameObject:
   m_ObjectHideFlags: 0
@@ -4076,6 +4262,7 @@ GameObject:
   - component: {fileID: 794710961}
   - component: {fileID: 794710960}
   - component: {fileID: 794710959}
+  - component: {fileID: 794710963}
   m_Layer: 5
   m_Name: SignUp Button
   m_TagString: Untagged
@@ -4168,7 +4355,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1037728414}
         m_TargetAssemblyTypeName: Write, Assembly-CSharp
         m_MethodName: sendInfo
         m_Mode: 1
@@ -4219,6 +4406,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794710957}
   m_CullTransparentMesh: 1
+--- !u!114 &794710963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794710957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f17dd50daa23e648b8a0ba3a943799e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: {fileID: 125584132}
+  Surnames: {fileID: 266576226}
+  ID: {fileID: 2239358}
+  IDmessage: {fileID: 281377603}
+  nameError: {fileID: 655629839}
+  surnameError: {fileID: 254909151}
+  successfulMsg: {fileID: 1867049136}
+  signUpCanvas: {fileID: 2009898643}
+  exitbutton: {fileID: 2093624535}
 --- !u!1001 &816670643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4492,6 +4700,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857968148}
   m_CullTransparentMesh: 1
+--- !u!1 &858982444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858982446}
+  - component: {fileID: 858982445}
+  m_Layer: 0
+  m_Name: LoginButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &858982445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858982444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1eece99614100e47b63dd1ac6ed1f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signupCanvas: {fileID: 2009898643}
+  loginCanvas: {fileID: 1867272236}
+  loginButton: {fileID: 181392189}
+  write2: {fileID: 0}
+--- !u!4 &858982446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858982444}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -36.91642, y: 0.48709112, z: 5.723661}
+  m_LocalScale: {x: 0.30069998, y: 0.28437, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &885005047
 GameObject:
   m_ObjectHideFlags: 0
@@ -5055,6 +5311,59 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -10}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1037728413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1037728415}
+  - component: {fileID: 1037728414}
+  m_Layer: 0
+  m_Name: Write
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1037728414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037728413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f17dd50daa23e648b8a0ba3a943799e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: {fileID: 125584132}
+  Surnames: {fileID: 266576226}
+  ID: {fileID: 2239358}
+  IDmessage: {fileID: 281377603}
+  nameError: {fileID: 655629839}
+  surnameError: {fileID: 254909151}
+  successfulMsg: {fileID: 1867049136}
+  signUpCanvas: {fileID: 2009898643}
+  exitbutton: {fileID: 2093624535}
+--- !u!4 &1037728415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037728413}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -37.458347, y: 0.27662608, z: 8.314175}
+  m_LocalScale: {x: 0.30069998, y: 0.28437, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1053353948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7224,7 +7533,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 329528252}
         m_TargetAssemblyTypeName: LogininSignUp, Assembly-CSharp
         m_MethodName: changeCanvas
         m_Mode: 1
@@ -7989,7 +8298,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 265402680}
         m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
         m_MethodName: hideCanvas
         m_Mode: 1

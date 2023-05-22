@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Write2 : MonoBehaviour
 {
@@ -91,6 +92,7 @@ public class Write2 : MonoBehaviour
                 if (kidID == id)
                 {
                     return true;
+                    //SceneManager.LoadScene(1);
                 }
                   
             }
