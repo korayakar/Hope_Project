@@ -14,6 +14,7 @@ public class Write : MonoBehaviour
     public Text surnameError;
     public Text successfulMsg;
     public Canvas signUpCanvas;
+    public Canvas loginCanvas;
     private string connectionString;
     private MySqlConnection MS_Connection;
     private MySqlCommand MS_Command;
@@ -98,6 +99,8 @@ public class Write : MonoBehaviour
                 Debug.Log("hello");
                 successfulMsg.text = "Successfully signed up!";
                 MS_Connection.Close();
+                Invoke("changeCanvas", 5);
+                
                 return true;
             }
             return false;
@@ -129,5 +132,13 @@ public class Write : MonoBehaviour
         connectionString = "Server = 127.0.0.1 ; Database = hopedb ; User = Hope; Password = QTxdhGkPGLO5eRUW; Charset = utf8;";
         MS_Connection = new MySqlConnection(connectionString);
         MS_Connection.Open();
+    }
+
+    public void changeCanvas()
+    {
+
+        signUpCanvas.gameObject.SetActive(false);
+        loginCanvas.gameObject.SetActive(true);
+
     }
 }

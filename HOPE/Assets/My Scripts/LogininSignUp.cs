@@ -13,7 +13,7 @@ public class LogininSignUp : MonoBehaviour
     {
         loginButton = GetComponent<Button>();
         loginButton.onClick.AddListener(changeCanvas);
-    
+        
 
     }
 

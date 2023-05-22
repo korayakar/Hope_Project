@@ -91,8 +91,9 @@ public class Write2 : MonoBehaviour
             {
                 if (kidID == id)
                 {
+                    SceneManager.LoadScene(1);
                     return true;
-                    //SceneManager.LoadScene(1);
+                    
                 }
                   
             }
