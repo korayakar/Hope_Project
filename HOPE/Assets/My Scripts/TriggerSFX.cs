@@ -7,9 +7,29 @@ public class TriggerSFX : MonoBehaviour
 
     public AudioSource playSound;
 
+    //public AudioSource audio;
+
+    void Awake()
+    {
+        playSound = GetComponent<AudioSource>();
+      
+    }
+    
     void OnTriggerEnter(Collider other)
     {
-        playSound.Play();
+        
+        if (other.gameObject.tag == "Player")
+        {
+            playSound.Play();
+        }
+           
+  
     }
+  
 
+    
+
+
+       
+    
 }
