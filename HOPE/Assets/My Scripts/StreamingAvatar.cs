@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Oculus.Avatar2;
-using Photon.Pun;
+//using Photon.Pun;
 using System;
 
 public class StreamingAvatar : OvrAvatarEntity
-{
+{/*
     public OculusStuff networkCon;
     PhotonView view;
     public bool startBool;
@@ -77,4 +77,5 @@ public class StreamingAvatar : OvrAvatarEntity
         avatarBytes = aBytes;
         ApplyStreamData(avatarBytes);
     }
+    */
 }

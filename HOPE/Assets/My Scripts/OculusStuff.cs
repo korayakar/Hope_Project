@@ -4,13 +4,13 @@ using UnityEngine;
 using Oculus.Platform;
 using System;
 using Oculus.Avatar2;
-using Photon.Pun;
-using Photon.Realtime;
+//using Photon.Pun;
+//using Photon.Realtime;
 using CAPI = Oculus.Avatar2.CAPI;
 using UnityEditor;
 
-public class OculusStuff : MonoBehaviourPunCallbacks
-{
+public class OculusStuff : MonoBehaviour
+{/*
     public UInt64 _userId = 0;
     public string appID;
     public string sampleAvatar = "sampleAvatar";
@@ -156,4 +156,5 @@ public class OculusStuff : MonoBehaviourPunCallbacks
         playerGo = PhotonNetwork.Instantiate(playerPrefab.name, StartRigGo.position, StartRigGo.rotation, 0, userID0);
         StartRigGo.gameObject.SetActive(false);
     }
+    */
 }
