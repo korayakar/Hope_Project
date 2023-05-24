@@ -35,24 +35,24 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 4)
+        if(other.gameObject.layer == 4 && Time.renderedFrameCount % 5 == 0)
         {
-            CreateRipple(-180, 180, 3, 4, 1.25f, 3);
+            CreateRipple(-180, 180, 1, 1.4f, 0.5f, 1);
         }
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 4 && Time.renderedFrameCount % 10 == 0)
+        if (other.gameObject.layer == 4 && Time.renderedFrameCount % 15 == 0)
         {
             int y = (int)transform.eulerAngles.y;
-            CreateRipple(y-100, y+100, 3, 5.4f, 1, 1.5f);
+            CreateRipple(y-100, y+100, 1, 1.25f, 0.4f, 0.8f);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == 4)
+        if (other.gameObject.layer == 4 && Time.renderedFrameCount % 5 == 0)
         {
-            CreateRipple(-180, 180, 3, 4, 1.25f, 3);
+            CreateRipple(-180, 180, 1, 1.4f, 0.5f, 1);
         }
     }
 }
