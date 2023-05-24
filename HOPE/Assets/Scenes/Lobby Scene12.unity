@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c0fff5d8646c94a896956668589dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: {fileID: 926051591}
+  ID: {fileID: 0}
   IDmessage: {fileID: 1352699548}
   loginCanvas: {fileID: 391312872}
   signUpCanvas: {fileID: 1600874788}
@@ -5087,9 +5087,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f17dd50daa23e648b8a0ba3a943799e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: {fileID: 870619733}
-  Surnames: {fileID: 814105701}
-  ID: {fileID: 164005937}
+  name: {fileID: 0}
+  Surnames: {fileID: 0}
+  ID: {fileID: 0}
   IDmessage: {fileID: 76853800}
   nameError: {fileID: 2119527026}
   surnameError: {fileID: 1267191358}
@@ -13940,7 +13940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c0fff5d8646c94a896956668589dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: {fileID: 926051591}
+  ID: {fileID: 0}
   IDmessage: {fileID: 1352699548}
   loginCanvas: {fileID: 391312872}
   signUpCanvas: {fileID: 1600874788}

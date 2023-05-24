@@ -46,6 +46,9 @@ namespace Oculus.Voice
 
         [Tooltip("Enables logs related to the interaction to be displayed on console")]
         [SerializeField] private bool enableConsoleLogging;
+        public VoiceServiceRequestEvents requestEvents_;
+        public WitRequestOptions requestOptions_;
+        public string fullText;
 
         public WitRuntimeConfiguration RuntimeConfiguration
         {
@@ -120,11 +123,16 @@ namespace Oculus.Voice
 
         public override VoiceServiceRequest Activate(string text, WitRequestOptions requestOptions, VoiceServiceRequestEvents requestEvents)
         {
+            //Debug.Log(CanSend());
+            //Debug.Log("*****");
             if (CanSend())
             {
+
                 voiceSDKLoggerImpl.LogInteractionStart(requestOptions.RequestId, "message");
                 LogRequestConfig();
-                return voiceServiceImpl.Activate(text, requestOptions, requestEvents);
+             
+             
+                return voiceServiceImpl.Activate(text + " ", requestOptions, requestEvents);
             }
             return null;
         }
@@ -150,9 +158,14 @@ namespace Oculus.Voice
             }
             return string.Empty;
         }
-
+     
         public override VoiceServiceRequest Activate(WitRequestOptions requestOptions, VoiceServiceRequestEvents requestEvents)
         {
+            Debug.Log(requestOptions);
+            Debug.Log(requestEvents);
+            Debug.Log("*****");
+            requestOptions_ = requestOptions;
+            requestEvents_ = requestEvents;
             if (CanActivateAudio() && CanSend())
             {
                 voiceSDKLoggerImpl.LogInteractionStart(requestOptions.RequestId, "speech");
@@ -367,46 +380,55 @@ namespace Oculus.Voice
 
         void OnAborted()
         {
+            Debug.Log("Stopped 1");
             voiceSDKLoggerImpl.LogInteractionEndFailure("aborted");
         }
 
         void OnError(string errorType, string errorMessage)
         {
+            Debug.Log("Stopped 2");
             voiceSDKLoggerImpl.LogInteractionEndFailure($"{errorType}:{errorMessage}");
         }
 
         void OnStartedListening()
         {
+            Debug.Log("Stopped 3");
             voiceSDKLoggerImpl.LogInteractionPoint("startedListening");
         }
 
         void OnMinimumWakeThresholdHit()
         {
+            Debug.Log("Stopped 4");
             voiceSDKLoggerImpl.LogInteractionPoint("minWakeThresholdHit");
         }
 
         void OnStoppedListening()
         {
+            Debug.Log("Stopped 5");
             voiceSDKLoggerImpl.LogInteractionPoint("stoppedListening");
         }
 
         void OnStoppedListeningDueToTimeout()
         {
+            Debug.Log("Stopped 6");
             voiceSDKLoggerImpl.LogInteractionPoint("stoppedListeningTimeout");
         }
 
         void OnStoppedListeningDueToInactivity()
         {
+            Debug.Log("Stopped 7");
             voiceSDKLoggerImpl.LogInteractionPoint("stoppedListeningInactivity");
         }
 
         void OnStoppedListeningDueToDeactivation()
         {
+            Debug.Log("Stopped 8");
             voiceSDKLoggerImpl.LogInteractionPoint("stoppedListeningDeactivate");
         }
 
         void OnMicDataSent()
         {
+            Debug.Log("Stopped 9");
             voiceSDKLoggerImpl.LogInteractionPoint("micDataSent");
         }
 
@@ -427,11 +449,13 @@ namespace Oculus.Voice
 
         void OnPartialTranscription(string text)
         {
+            Debug.Log(text);
+            fullText += text;
             voiceSDKLoggerImpl.LogFirstTranscriptionTime();
         }
 
         void OnFullTranscription(string text)
-        {
+        {   
             voiceSDKLoggerImpl.LogInteractionPoint("fullTranscriptionTime");
         }
 
@@ -452,3 +476,5 @@ namespace Oculus.Voice
         #endregion
     }
 }
+
+

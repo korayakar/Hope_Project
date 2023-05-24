@@ -129,7 +129,7 @@ namespace Oculus.Voice.Demo
         // Deactivate
         private void OnRequestComplete()
         {
-            _active = false;
+            _active = true;
         }
 
         // Toggle activation
