@@ -4,11 +4,13 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Write2 : MonoBehaviour
 {
-  
-    public Text ID;
+
+    public TMP_InputField ID;
+    //public TMPro.TMP_Text ID;
     public Text IDmessage;
     public Canvas loginCanvas;
     public Canvas signUpCanvas;
@@ -44,6 +46,7 @@ public class Write2 : MonoBehaviour
 
         if (!(isNumber(ID.text.ToString())))
         {
+            //inputField.GetComponent<TMP_InputField>().text;
             IDmessage.text = "not a number!";
             return;
         }

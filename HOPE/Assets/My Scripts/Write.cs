@@ -3,12 +3,16 @@ using UnityEngine.UI;
 using MySql.Data.MySqlClient;
 using System;
 using System.Threading;
+using TMPro;
 
 public class Write : MonoBehaviour
 {
-    public Text name;
-    public Text Surnames;
-    public Text ID;
+    public TMP_InputField name;
+    public TMP_InputField Surnames;
+    public TMP_InputField ID;
+    //public TMPro.TMP_Text name;
+    //public TMPro.TMP_Text Surnames;
+    //public TMPro.TMP_Text ID;
     public Text IDmessage;
     public Text nameError;
     public Text surnameError;
