@@ -5345,7 +5345,7 @@ MonoBehaviour:
   signupCanvas: {fileID: 2009898643}
   loginCanvas: {fileID: 1867272236}
   loginButton: {fileID: 181392189}
-  write2: {fileID: 0}
+  write2: {fileID: 423577336}
 --- !u!4 &858982446
 Transform:
   m_ObjectHideFlags: 0
@@ -9540,7 +9540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22458684, guid: c4e389e44d96da64ea974ab237ce1a9a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.61
+      value: 5.67
       objectReference: {fileID: 0}
     - target: {fileID: 22458684, guid: c4e389e44d96da64ea974ab237ce1a9a, type: 3}
       propertyPath: m_LocalRotation.w
