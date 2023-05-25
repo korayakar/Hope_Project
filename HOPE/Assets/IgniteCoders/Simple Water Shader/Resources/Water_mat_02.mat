@@ -33,6 +33,18 @@ Material:
         m_Texture: {fileID: 2800000, guid: 11154d936b05e66498f68fa178c5cfbb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Foam_Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ripple_RT:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_a7c025c2aba147adbdae5627d7dffcc2_Out_0:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -59,14 +71,31 @@ Material:
     - Vector1_6f56a0970372485390c6587863c2374e: 2.78
     - Vector1_7273530c27a34c9f8ee5723b84f96baa: 0.3
     - Vector1_dada42ebfac44076897b6de67441ba32: 0.3
+    - _Depth: 0
+    - _Depth_Fade: 0
+    - _Foam: 0
+    - _Foam_Scale: 1
+    - _Normal_Strength: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Reflection_Refraction: 0
+    - _Refraction: 0
+    - _Ripple_Strength: 1
+    - _Smoothness: 0
+    - _Water_Lerp: 0
+    - _Wave: 0
     m_Colors:
     - Color_36218622185947c6a5ae36366d8e21d8: {r: 0.11480955, g: 0.24716993, b: 0.5660378,
         a: 0.9607843}
     - Color_93e06cd551a5449091bcde90b46765a0: {r: 0.5803922, g: 0.6183772, b: 0.7254902,
         a: 0.44705883}
     - Vector2_4351ac2be1d74054986ec5378db9d578: {r: 1, g: 1, b: 0, a: 0}
+    - _Albedo: {r: 1, g: 1, b: 1, a: 0}
+    - _Foam_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _UV1: {r: 0, g: 0, b: 0, a: 0}
+    - _UV2: {r: 0, g: 0, b: 0, a: 0}
+    - _Water_Speed_1: {r: 0, g: 0, b: 0, a: 0}
+    - _Water_Speed_2: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7335909070348930192
 MonoBehaviour:

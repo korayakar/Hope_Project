@@ -69,8 +69,8 @@ Material:
     - Vector1_dada42ebfac44076897b6de67441ba32: 0.3
     - _Depth: 2.55
     - _Depth_Fade: 0.85
-    - _Foam: 0.75
-    - _Foam_Scale: 2.42
+    - _Foam: 2
+    - _Foam_Scale: 3.28
     - _Lerp: 0.3
     - _Normal_Strength: 3.2
     - _QueueControl: 0

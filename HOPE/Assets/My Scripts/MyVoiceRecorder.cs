@@ -87,15 +87,15 @@ namespace Oculus.Voice.Demo
         // Listen start
         private void OnListenStart()
         {
-            textArea.text = "Listening...";
+           // textArea.text = "Listening...";
         }
         // Listen stop
         private void OnListenStop()
         {
-            textArea.text = "Processing...";
+           textArea.text = "Processing...";
         }
         // Listen stop
-        private void OnListenForcedStop()
+        public void OnListenForcedStop()
         {
             if (!showJson)
             {
@@ -116,6 +116,7 @@ namespace Oculus.Voice.Demo
             }
             //OnRequestComplete();
             //Thread.Sleep(500);
+            
             appVoiceExperience.Activate();
         }
         // Request error
@@ -130,7 +131,7 @@ namespace Oculus.Voice.Demo
         // Deactivate
         public void OnRequestComplete()
         {
-            Debug.Log("Completed");
+            appVoiceExperience.Deactivate();
             _active = false;
         }
 

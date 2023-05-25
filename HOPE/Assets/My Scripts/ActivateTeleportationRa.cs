@@ -12,10 +12,13 @@ public class ActivateTeleportationRa : MonoBehaviour
     public InputActionProperty leftA;
     public InputActionProperty rightA;
 
+    public InputActionProperty leftCancel;
+    public InputActionProperty rightCancel;
+
     // Update is called once per frame
     void Update()
     {
-        leftTeleport.SetActive(leftA.action.ReadValue<float>() > 0.1f);
-        rightTeleport.SetActive(rightA.action.ReadValue<float>() > 0.1f);
+        leftTeleport.SetActive(leftCancel.action.ReadValue<float>() == 0 && leftA.action.ReadValue<float>() > 0.1f);
+        rightTeleport.SetActive(rightCancel.action.ReadValue<float>() == 0 && rightA.action.ReadValue<float>() > 0.1f);
     }
 }
