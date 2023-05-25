@@ -28,13 +28,19 @@ public class Write : MonoBehaviour
     void Start()
     {
         exitbutton.gameObject.SetActive(false);
+
     }
 
     public void sendInfo()
     {
-        connection();
 
-        if(name.text.ToString() == "" || name.text == null)
+        if (!connection())
+        {
+            return;
+        }
+
+
+        if (name.text.ToString() == "" || name.text == null)
         {
             nameError.text = "Name cannot be null!";
             exitbutton.gameObject.SetActive(false);
@@ -74,9 +80,10 @@ public class Write : MonoBehaviour
         if (long.Parse(ID.text) % 2 != 0 || ID.text.ToString().Length != 11)
         {
             IDmessage.text = "not a valid ID!";
-            return ;
+            return;
         }
-        
+        else IDmessage.text = "";
+
         query = "insert into MyTable(Name, Surname, ID) values('" + name.text + "' , '" + Surnames.text + "', '" + ID.text + "');";
 
         MS_Command = new MySqlCommand(query, MS_Connection);
@@ -131,18 +138,34 @@ public class Write : MonoBehaviour
         }
     }
 
-    public void connection()
+    public bool connection()
     {
-        connectionString = "Server = 127.0.0.1 ; Database = hopedb ; User = Hope; Password = QTxdhGkPGLO5eRUW; Charset = utf8;";
-        MS_Connection = new MySqlConnection(connectionString);
-        MS_Connection.Open();
+
+      
+        try
+        {
+            connectionString = "Server = 127.0.0.1 ; Database = hopedb ; User = Hope; Password = QTxdhGkPGLO5eRUW; Charset = utf8;";
+            MS_Connection = new MySqlConnection(connectionString);
+            MS_Connection.Open();
+            return true;
+        }
+        catch (Exception e)
+        {
+            successfulMsg.text = "No server connection";
+            return false;
+        }
+
     }
+
 
     public void changeCanvas()
     {
-
+        successfulMsg.text = "";
+        nameError.text = "";
+        surnameError.text = "";
+        IDmessage.text = "";
         signUpCanvas.gameObject.SetActive(false);
-        loginCanvas.gameObject.SetActive(true);
+
 
     }
 }
