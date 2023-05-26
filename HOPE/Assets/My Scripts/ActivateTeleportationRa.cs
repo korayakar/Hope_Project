@@ -22,3 +22,5 @@ public class ActivateTeleportationRa : MonoBehaviour
         rightTeleport.SetActive(rightCancel.action.ReadValue<float>() == 0 && rightA.action.ReadValue<float>() > 0.1f);
     }
 }
+//leftCancel.action.ReadValue<float>() == 0 && 
+//rightCancel.action.ReadValue<float>() == 0 && 
