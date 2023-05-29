@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnimExit : MonoBehaviour
+public class DiaryExit : MonoBehaviour
 {
     public Canvas mainCanvas;
-    public Canvas breathingCanvas;
     public Canvas diaryCanvas;
-    public Button exitButton;
+    public Canvas animCanvas;
+    public Button diaryExitButton;
     // Start is called before the first frame update
     void Start()
     {
-        exitButton = GetComponent<Button>();
+        diaryExitButton = GetComponent<Button>();
 
-        exitButton.onClick.AddListener(hideCanvas);
-
+        diaryExitButton.onClick.AddListener(hideCanvas);
     }
 
     public void hideCanvas()
     {
-        breathingCanvas.gameObject.SetActive(false);
         diaryCanvas.gameObject.SetActive(false);
+        animCanvas.gameObject.SetActive(false);
         mainCanvas.gameObject.SetActive(true);
     }
 }
