@@ -7,11 +7,14 @@ public class BlackDuckRespawn : MonoBehaviour
 {
     public GameObject cyanDuck;
     public Rigidbody cRigidBody;
+    public DuckGameScoreKeeper scorer = new DuckGameScoreKeeper();
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bullet"))
         {
+
+            DuckGameScoreKeeper.score++;
             cRigidBody.constraints = RigidbodyConstraints.None;
             Invoke("PrepareForRespawn", 5);
 

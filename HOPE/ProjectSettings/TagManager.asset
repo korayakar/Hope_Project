@@ -10,6 +10,7 @@ TagManager:
   - Cow
   - FeedingStuff
   - Bullet
+  - GolfBall
   layers:
   - Default
   - TransparentFX

@@ -7,11 +7,12 @@ public class PurpleDuckRespawn : MonoBehaviour
 {
     public GameObject purpleDuck;
     public Rigidbody pRigidBody;
-
+    public DuckGameScoreKeeper scorer = new DuckGameScoreKeeper();
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bullet"))
         {
+            DuckGameScoreKeeper.score++;
             pRigidBody.constraints = RigidbodyConstraints.None;
             Invoke("PrepareForRespawn", 5);
             
