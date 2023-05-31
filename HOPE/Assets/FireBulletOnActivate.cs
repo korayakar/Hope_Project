@@ -7,7 +7,7 @@ public class FireBulletOnActivate : MonoBehaviour
 {
     public GameObject bullet;
     public Transform spawnPoint;
-    public float fireSpeed = 20;
+    public float fireSpeed = 30;
 
     // Start is called before the first frame update
     void Start()

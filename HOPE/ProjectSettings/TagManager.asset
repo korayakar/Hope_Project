@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Water
+  - Ball
+  - Box
+  - Cow
+  - FeedingStuff
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -17,7 +22,7 @@ TagManager:
   - Left Hand Physics
   - Right Hand Physics
   - Non Physics Hand Layer
-  - 
+  - Bullet
   - 
   - 
   - 
