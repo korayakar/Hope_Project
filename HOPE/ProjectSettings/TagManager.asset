@@ -12,6 +12,8 @@ TagManager:
   - Bullet
   - GolfBall
   - Hand
+  - Table
+  - PongBall
   layers:
   - Default
   - TransparentFX

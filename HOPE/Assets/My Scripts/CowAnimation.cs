@@ -23,7 +23,7 @@ public class CowAnimation : MonoBehaviour
     IEnumerator StartAnimation()
     {
         cow.GetComponent<Animator>().enabled = true;
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(14);
         cow.GetComponent<Animator>().enabled = false;
         yield return new WaitForSeconds(1);
 
