@@ -108,7 +108,6 @@ MonoBehaviour:
   - {fileID: -4037882877164471294}
   - {fileID: 6108780608113219139}
   - {fileID: -3185161503596066982}
-  - {fileID: 2330603749338473219}
   - {fileID: -1267119453295413260}
   - {fileID: 1051971502567804650}
   - {fileID: 4127679539903750964}
@@ -404,6 +403,7 @@ MonoBehaviour:
   m_Name: MetaQuestFeature Android
   m_EditorClassIdentifier: 
   m_enabled: 0
+  <failedInitialization>k__BackingField: 0
   nameUi: Meta Quest Support
   version: 1.0.0
   featureIdInternal: com.unity.openxr.feature.metaquest

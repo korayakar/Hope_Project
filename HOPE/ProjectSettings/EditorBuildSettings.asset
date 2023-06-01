@@ -5,22 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/LoginSignup Scene.unity
     guid: a1ca70b61a12fe0438f82d3e1e95df91
   - enabled: 1
     path: Assets/Scenes/Lobby Scene12.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Playground_v1 su3.unity
     guid: aaa8fbf0953f2d04a96d9c5a49d709be
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Beach Scene.unity
     guid: e1392193cbb0cbe4881a87aa2c94d9a0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Relaxation Room.unity
     guid: fefe56ac784996643b013ab7e6e1ccc1
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Farm.unity
     guid: 6495ab2bd2beb4784b2ac3b8f2196757
   - enabled: 0
