@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Timer1 : MonoBehaviour
+public class Timer2 : MonoBehaviour
 {
     public float timeRemaining = 60;
     private float timeRemainingTemp = 60;
@@ -12,40 +12,40 @@ public class Timer1 : MonoBehaviour
 
 
 
-/*
-    private void OnCollisionEnter(Collider other)
-    {
-        if (other.CompareTag("Hand") && timerIsRunning2)
+    /*
+        private void OnCollisionEnter(Collider other)
         {
-            timerIsRunning = true;
+            if (other.CompareTag("Hand") && timerIsRunning2)
+            {
+                timerIsRunning = true;
+            }
         }
-    }
-    private void OnCollisionExit(Collider other)
-    {
-        if (other.CompareTag("Hand") )
+        private void OnCollisionExit(Collider other)
         {
-            timerIsRunning = false;
-            timerIsRunning2 = true;
+            if (other.CompareTag("Hand") )
+            {
+                timerIsRunning = false;
+                timerIsRunning2 = true;
+            }
         }
-    }
-*/
+    */
     void Update()
     {
         if (DuckGameScoreKeeper.score > 0)
         {
-                if (timeRemaining >= 0)
-                {
-                    timeRemaining -= Time.deltaTime;
-                    DisplayTime(timeRemaining);
-                }
-                else
-                {
-                    timeText.text = "Your time is up!";
-                    finalScore.text = "Final Score: " +  DuckGameScoreKeeper.score.ToString();
-                    DuckGameScoreKeeper.score = 0;
-                    timeRemaining = timeRemainingTemp;
-                }
+            if (timeRemaining >= 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                DisplayTime(timeRemaining);
             }
+            else
+            {
+                timeText.text = "Your time is up!";
+                finalScore.text = "Final Score: " + DuckGameScoreKeeper.score.ToString();
+                ShootingTowerScore.score = 0;
+                timeRemaining = timeRemainingTemp;
+            }
+        }
     }
     void DisplayTime(float timeToDisplay)
     {

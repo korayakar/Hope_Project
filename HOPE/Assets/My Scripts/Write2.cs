@@ -10,8 +10,10 @@ public class Write2 : MonoBehaviour
 {
 
     public TMP_InputField ID;
+    public TMP_InputField password;
     //public TMPro.TMP_Text ID;
     public Text IDmessage;
+    public Text passwordErrorMessage;
     public Canvas loginCanvas;
     public Canvas signUpCanvas;
     private string connectionString;
@@ -31,7 +33,6 @@ public class Write2 : MonoBehaviour
     {
  
         connection();
-
        
         if (ID.text.ToString() == "" )
         {
@@ -56,6 +57,24 @@ public class Write2 : MonoBehaviour
             IDmessage.text = "not a valid ID!";
             return;
         }
+
+        if(password.text.ToString() == "")
+        {
+            passwordErrorMessage.text = "Please fill password field!";
+            return;
+        }
+        else
+        {
+            passwordErrorMessage.text = "";
+        }
+
+        if (password.ToString().Length < 6)
+        {
+            passwordErrorMessage.text = "Password length must be bigger than 6";
+            return;
+        }
+        else { IDmessage.text = ""; }
+
 
         query = "SELECT ID FROM MyTable";
 

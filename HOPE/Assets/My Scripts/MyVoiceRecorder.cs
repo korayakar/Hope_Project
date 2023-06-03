@@ -43,6 +43,8 @@ namespace Oculus.Voice.Demo
         private bool _active = false;
         private  string fullText = "";
 
+        private bool shouldStop = false;
+
         // Add delegates
         private void OnEnable()
         {
@@ -109,15 +111,22 @@ namespace Oculus.Voice.Demo
 
             if (!showJson)
             {
+                string toAdd = ((string) response["text"]).Trim();
 
+                if (!(toAdd.Equals("") || toAdd.Length == 0))
+                {
                     fullText += response["text"];
-                    textArea.text = "I heard: " + fullText;
+                    fullText += ".";
+                }
+
+                textArea.text = "I heard: " + fullText;
               
             }
             //OnRequestComplete();
             //Thread.Sleep(500);
             
-            appVoiceExperience.Activate();
+            if (!shouldStop)
+                appVoiceExperience.Activate();
         }
         // Request error
         private void OnRequestError(string error, string message)
@@ -135,9 +144,16 @@ namespace Oculus.Voice.Demo
             _active = false;
         }
 
+        public void OnRequestStoppedByButton()
+        {
+            shouldStop = true;
+            OnRequestComplete();
+        }
+
         // Toggle activation
         public void ToggleActivation()
         {
+            shouldStop = false;
             SetActivation(!_active);
         }
         // Set activation

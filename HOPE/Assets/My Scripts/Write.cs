@@ -1,21 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using MySql.Data.MySqlClient;
 using System;
 using System.Threading;
+using System.Collections;
 using TMPro;
 
 public class Write : MonoBehaviour
 {
     public TMP_InputField name;
-    public TMP_InputField Surnames;
+    public TMP_InputField password;
     public TMP_InputField ID;
     //public TMPro.TMP_Text name;
     //public TMPro.TMP_Text Surnames;
     //public TMPro.TMP_Text ID;
     public Text IDmessage;
     public Text nameError;
-    public Text surnameError;
+    public Text passwordError;
     public Text successfulMsg;
     public Canvas signUpCanvas;
     public Canvas loginCanvas;
@@ -24,107 +26,72 @@ public class Write : MonoBehaviour
     private MySqlCommand MS_Command;
     string query;
     public Button exitbutton;
+    public Button signUpButton;
+    private const string url = "http://localhost:8080/api/v1/login";
 
     void Start()
     {
         exitbutton.gameObject.SetActive(false);
-
+       
     }
 
     public void sendInfo()
     {
-
-        if (!connection())
-        {
-            return;
-        }
-
-
+        StartCoroutine(Signup());
         if (name.text.ToString() == "" || name.text == null)
         {
-            nameError.text = "Name cannot be null!";
+            nameError.text = "Name cannot be empty!";
             exitbutton.gameObject.SetActive(false);
             return;
         }
 
-        else
-        {
-            nameError.text = "";
-        }
-        if (Surnames.text.ToString() == "")
-        {
-            surnameError.text = "Surname cannot be null!";
-            return;
-        }
-        else
-        {
-            surnameError.text = "";
-        }
         if (ID.text.ToString() == "")
         {
             IDmessage.text = "ID cannot be empty!";
-            return ;
-        }
-
-        else
-        {
-            IDmessage.text = "";
+            return;
         }
 
         if (!(isNumber(ID.text.ToString())))
         {
             IDmessage.text = "not a number!";
-            return ;
+            return;
         }
-        else IDmessage.text = "";
+
         if (long.Parse(ID.text) % 2 != 0 || ID.text.ToString().Length != 11)
         {
             IDmessage.text = "not a valid ID!";
             return;
         }
-        else IDmessage.text = "";
 
-        query = "insert into MyTable(Name, Surname, ID) values('" + name.text + "' , '" + Surnames.text + "', '" + ID.text + "');";
+        if (password.text.ToString() == "")
+        {
+            passwordError.text = "Please fill password field!";
+            return;
+        }
 
-        MS_Command = new MySqlCommand(query, MS_Connection);
+        if (password.text.ToString().Length < 6)
+        {
+            passwordError.text = "Password length must be bigger than 6!";
+            return;
+        }
 
+ 
+        nameError.text = "";
+        IDmessage.text = "";
+        passwordError.text = "";
+        // successfull login
+
+        
+        /*
         if (sendMessage()) {
             exitbutton.gameObject.SetActive(true);
         }
         else
         {
             exitbutton.gameObject.SetActive(false);
-        }
-       
-
-
-
-    }
-    public bool sendMessage()
-    {
-        try
-        {
-            int a = MS_Command.ExecuteNonQuery();
-            if(a != -1)
-            {
-                Debug.Log("hello");
-                successfulMsg.text = "Successfully signed up!";
-                MS_Connection.Close();
-                Invoke("changeCanvas", 5);
-                
-                return true;
-            }
-            return false;
-        }
-        catch (Exception e)
-        {
-            successfulMsg.text = "ID already used!";
-            return false;
-        }
-        return false;
+        }*/
     }
    
-
     public bool isNumber(string str)
     {
         try
@@ -138,34 +105,37 @@ public class Write : MonoBehaviour
         }
     }
 
-    public bool connection()
+    public IEnumerator Signup()
     {
+        Debug.Log("here!");
+        WWWForm form = new WWWForm();
+        form.AddField("username", "22222222222");
+        form.AddField("password", "123456789");
+        //form.AddField("name", name);
+        //form.AddField("role", "PATIENT");
 
-      
-        try
+        using (UnityWebRequest webRequest = UnityWebRequest.Post(url, form))
         {
-            connectionString = "Server = 127.0.0.1 ; Database = hopedb ; User = Hope; Password = QTxdhGkPGLO5eRUW; Charset = utf8;";
-            MS_Connection = new MySqlConnection(connectionString);
-            MS_Connection.Open();
-            return true;
+            yield return webRequest.SendWebRequest();
+            Debug.Log(webRequest.result);
+            if (webRequest.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Error sending request: " + webRequest.error);
+            }
+            else
+            {
+                string response = webRequest.downloadHandler.text;
+                Debug.Log("Response: " + response);
+            }
         }
-        catch (Exception e)
-        {
-            successfulMsg.text = "No server connection";
-            return false;
-        }
-
     }
-
 
     public void changeCanvas()
     {
         successfulMsg.text = "";
         nameError.text = "";
-        surnameError.text = "";
+        passwordError.text = "";
         IDmessage.text = "";
         signUpCanvas.gameObject.SetActive(false);
-
-
     }
 }

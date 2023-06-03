@@ -1335,7 +1335,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1054584845}
         m_TargetAssemblyTypeName: Oculus.Voice.Demo.MyVoiceRecorder, Assembly-CSharp
-        m_MethodName: OnRequestComplete
+        m_MethodName: OnRequestStoppedByButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
