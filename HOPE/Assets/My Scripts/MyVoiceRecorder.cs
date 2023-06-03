@@ -23,6 +23,8 @@ using Meta.WitAi.Json;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading;
+using System.Collections;
+using UnityEngine.Networking;
 
 namespace Oculus.Voice.Demo
 {
@@ -41,7 +43,8 @@ namespace Oculus.Voice.Demo
         // Whether voice is activated
         public bool IsActive => _active;
         private bool _active = false;
-        private  string fullText = "";
+        private string fullText = "";
+        private string diaryUrl = "http://localhost:8080/api/v1/diary";
 
         private bool shouldStop = false;
 
@@ -146,8 +149,38 @@ namespace Oculus.Voice.Demo
 
         public void OnRequestStoppedByButton()
         {
+   
             shouldStop = true;
             OnRequestComplete();
+        }
+
+        public void OnClickExitButton()
+        {
+            StartCoroutine(SaveDiary());
+        }
+
+        public IEnumerator SaveDiary()
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("text", fullText);
+
+            using (UnityWebRequest webRequest = UnityWebRequest.Post(diaryUrl, form))
+            {
+                // Add the authorization header
+                Debug.Log(Write2.accessToken);
+                webRequest.SetRequestHeader("Authorization", "Bearer " + Write2.accessToken);
+
+                yield return webRequest.SendWebRequest();
+
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Error sending request: " + webRequest.error);
+                }
+                else
+                {
+                    Debug.Log("Diary saved");
+                }
+            }
         }
 
         // Toggle activation

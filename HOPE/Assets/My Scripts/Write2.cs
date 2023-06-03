@@ -1,7 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using MySql.Data.MySqlClient;
 using System;
+using System.Text;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -22,8 +25,16 @@ public class Write2 : MonoBehaviour
     string query;
     public Button signUpButton;
     public bool isLogin = false;
+    public static string accessToken = null;
+    private const string loginUrl = "http://localhost:8080/api/v1/login";
 
- public void start()
+    [System.Serializable]
+    class Token
+    {
+        public string access_token;
+    }
+
+    public void start()
     {
         signUpButton = GetComponent<Button>();
         signUpButton.onClick.AddListener(changeCanvas);
@@ -31,18 +42,10 @@ public class Write2 : MonoBehaviour
 
     public void sendInfo()
     {
- 
-        connection();
-       
         if (ID.text.ToString() == "" )
         {
             IDmessage.text = "ID cannot be empty!";
             return;
-        }
-
-        else
-        {
-            IDmessage.text = "";
         }
 
         if (!(isNumber(ID.text.ToString())))
@@ -51,7 +54,7 @@ public class Write2 : MonoBehaviour
             IDmessage.text = "not a number!";
             return;
         }
-        else { IDmessage.text = ""; }
+
         if (long.Parse(ID.text) % 2 != 0 || ID.text.ToString().Length != 11)
         {
             IDmessage.text = "not a valid ID!";
@@ -63,79 +66,24 @@ public class Write2 : MonoBehaviour
             passwordErrorMessage.text = "Please fill password field!";
             return;
         }
-        else
-        {
-            passwordErrorMessage.text = "";
-        }
 
         if (password.ToString().Length < 6)
         {
             passwordErrorMessage.text = "Password length must be bigger than 6";
             return;
         }
-        else { IDmessage.text = ""; }
 
-
-        query = "SELECT ID FROM MyTable";
-
-        MS_Command  = new MySqlCommand(query, MS_Connection);
-      
-
-        if (takeID())
-        {
-            IDmessage.text = "";
-            loginCanvas.gameObject.SetActive(false);
-        }
-        else
-        {
-            loginCanvas.gameObject.SetActive(true);
-        }
-
-
-
-
-    }
-    public bool takeID()
-    {
-        try
-        {
-            MySqlDataReader reader = MS_Command.ExecuteReader();
-            List<long> ids = new List<long>();
-            while (reader.Read())
-            {
-                long id = reader.GetInt64(0);
-                ids.Add(id); 
-            }
-            reader.Close();   
-            MS_Connection.Close();
-            long kidID = long.Parse(ID.text.ToString());
-            foreach(long id in ids)
-            {
-                if (kidID == id)
-                {
-                    SceneManager.LoadScene(1);
-                    return true;
-                    
-                }
-                  
-            }
-            IDmessage.text = "Please sign up!";
-            return false; 
-        }
-        catch (Exception e)
-        {
-            IDmessage.text = "Cannot connect to server!";
-            return false;
-        }
-        return false;
+        IDmessage.text = "";
+        passwordErrorMessage.text = "";
+        StartCoroutine(Login(ID.text.ToString(), password.text.ToString()));
     }
 
     public void changeCanvas()
     {
         loginCanvas.gameObject.SetActive(false);
         signUpCanvas.gameObject.SetActive(true);
-       
     }
+
     public bool isNumber(string str)
     {
         try
@@ -149,10 +97,29 @@ public class Write2 : MonoBehaviour
         }
     }
 
-    public void connection()
+    public IEnumerator Login(string idNumber, string password)
     {
-        connectionString = "Server = 127.0.0.1 ; Database = hopedb ; User = Hope; Password = QTxdhGkPGLO5eRUW; Charset = utf8;";
-        MS_Connection = new MySqlConnection(connectionString);
-        MS_Connection.Open();
+        WWWForm form = new WWWForm();
+        form.AddField("username", idNumber);
+        form.AddField("password", password);
+
+        using (UnityWebRequest webRequest = UnityWebRequest.Post(loginUrl, form))
+        {
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Error sending request: " + webRequest.error);
+                passwordErrorMessage.text = "Error while loging in";
+            }
+            else
+            {
+                string response = webRequest.downloadHandler.text;
+                Token responseJson = JsonUtility.FromJson<Token>(response);
+                accessToken = responseJson.access_token;
+                SceneManager.LoadScene(1);
+                Debug.Log("Access token: " + accessToken);
+            }
+        }
     }
 }

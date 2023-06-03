@@ -3,8 +3,10 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using MySql.Data.MySqlClient;
 using System;
+using System.Text;
 using System.Threading;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 
 public class Write : MonoBehaviour
@@ -27,7 +29,32 @@ public class Write : MonoBehaviour
     string query;
     public Button exitbutton;
     public Button signUpButton;
-    private const string url = "http://localhost:8080/api/v1/login";
+    private const string signupUrl = "http://localhost:8080/api/v1/signup";
+
+    [System.Serializable]
+    class UserData
+    {
+        public string status;
+        public string message;
+        public User data;
+    }
+
+    [System.Serializable]
+    class User
+    {
+        public int id;
+        public string username;
+        public string password;
+        public string name;
+        public Role[] roles;
+    }
+
+    [System.Serializable]
+    class Role
+    {
+        public int id;
+        public string name;
+    }
 
     void Start()
     {
@@ -37,7 +64,6 @@ public class Write : MonoBehaviour
 
     public void sendInfo()
     {
-        StartCoroutine(Signup());
         if (name.text.ToString() == "" || name.text == null)
         {
             nameError.text = "Name cannot be empty!";
@@ -79,17 +105,7 @@ public class Write : MonoBehaviour
         nameError.text = "";
         IDmessage.text = "";
         passwordError.text = "";
-        // successfull login
-
-        
-        /*
-        if (sendMessage()) {
-            exitbutton.gameObject.SetActive(true);
-        }
-        else
-        {
-            exitbutton.gameObject.SetActive(false);
-        }*/
+        StartCoroutine(Signup(ID.text.ToString(), password.text.ToString(), name.text.ToString()));
     }
    
     public bool isNumber(string str)
@@ -105,27 +121,37 @@ public class Write : MonoBehaviour
         }
     }
 
-    public IEnumerator Signup()
+    public IEnumerator Signup(string idNumber, string password, string name)
     {
-        Debug.Log("here!");
         WWWForm form = new WWWForm();
-        form.AddField("username", "22222222222");
-        form.AddField("password", "123456789");
-        //form.AddField("name", name);
-        //form.AddField("role", "PATIENT");
+        form.AddField("username", idNumber);
+        form.AddField("password", password);
+        form.AddField("name", name);
+        form.AddField("role", "PATIENT");
 
-        using (UnityWebRequest webRequest = UnityWebRequest.Post(url, form))
+        using (UnityWebRequest webRequest = UnityWebRequest.Post(signupUrl, form))
         {
             yield return webRequest.SendWebRequest();
-            Debug.Log(webRequest.result);
+
             if (webRequest.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError("Error sending request: " + webRequest.error);
+                successfulMsg.text = "Error while signing up";
             }
             else
             {
                 string response = webRequest.downloadHandler.text;
-                Debug.Log("Response: " + response);
+                UserData responseJson = JsonUtility.FromJson<UserData>(response);
+
+                if (responseJson.status.Equals("success"))
+                {
+                    exitbutton.gameObject.SetActive(true);
+                    successfulMsg.text = "Successfully Signup!";
+                } else
+                {
+                    successfulMsg.text = responseJson.message;
+                }
+                Debug.Log(responseJson.status);
             }
         }
     }
