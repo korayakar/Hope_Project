@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Timer1 : MonoBehaviour
@@ -9,9 +10,12 @@ public class Timer1 : MonoBehaviour
     private float timeRemainingTemp = 60;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI finalScore;
+    public GameObject TeddyBear;
 
-
-
+    public void Start()
+    {
+        TeddyBear.gameObject.SetActive(false);
+    }
 /*
     private void OnCollisionEnter(Collider other)
     {
@@ -41,6 +45,10 @@ public class Timer1 : MonoBehaviour
                 else
                 {
                     timeText.text = "Your time is up!";
+                if (DuckGameScoreKeeper.score >= 50)
+                {
+                    TeddyBear.gameObject.SetActive(true);
+                }
                     finalScore.text = "Final Score: " +  DuckGameScoreKeeper.score.ToString();
                     DuckGameScoreKeeper.score = 0;
                     timeRemaining = timeRemainingTemp;

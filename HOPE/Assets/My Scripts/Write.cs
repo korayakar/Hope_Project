@@ -70,11 +70,18 @@ public class Write : MonoBehaviour
             exitbutton.gameObject.SetActive(false);
             return;
         }
-
+        else
+        {
+            nameError.text = "";
+        }
         if (ID.text.ToString() == "")
         {
             IDmessage.text = "ID cannot be empty!";
             return;
+        }
+        else
+        {
+            IDmessage.text = "";
         }
 
         if (!(isNumber(ID.text.ToString())))
@@ -82,17 +89,31 @@ public class Write : MonoBehaviour
             IDmessage.text = "not a number!";
             return;
         }
+        else
+        {
+            IDmessage.text = "";
+        }
+
 
         if (long.Parse(ID.text) % 2 != 0 || ID.text.ToString().Length != 11)
         {
             IDmessage.text = "not a valid ID!";
             return;
         }
+        else
+        {
+            IDmessage.text = "";
+        }
+
 
         if (password.text.ToString() == "")
         {
             passwordError.text = "Please fill password field!";
             return;
+        }
+        else
+        {
+            passwordError.text = "";
         }
 
         if (password.text.ToString().Length < 6)
@@ -100,11 +121,11 @@ public class Write : MonoBehaviour
             passwordError.text = "Password length must be bigger than 6!";
             return;
         }
+        else
+        {
+            passwordError.text = "";
+        }
 
- 
-        nameError.text = "";
-        IDmessage.text = "";
-        passwordError.text = "";
         StartCoroutine(Signup(ID.text.ToString(), password.text.ToString(), name.text.ToString()));
     }
    

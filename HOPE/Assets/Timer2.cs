@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Timer2 : MonoBehaviour
@@ -9,30 +10,19 @@ public class Timer2 : MonoBehaviour
     private float timeRemainingTemp = 60;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI finalScore;
+    public GameObject gift;
+    
 
+    void Start()
+    {
+        gift.gameObject.SetActive(false);
+    }
 
-
-    /*
-        private void OnCollisionEnter(Collider other)
-        {
-            if (other.CompareTag("Hand") && timerIsRunning2)
-            {
-                timerIsRunning = true;
-            }
-        }
-        private void OnCollisionExit(Collider other)
-        {
-            if (other.CompareTag("Hand") )
-            {
-                timerIsRunning = false;
-                timerIsRunning2 = true;
-            }
-        }
-    */
     void Update()
     {
-        if (DuckGameScoreKeeper.score > 0)
+        if (ShootingTowerScore.score > 0)
         {
+
             if (timeRemaining >= 0)
             {
                 timeRemaining -= Time.deltaTime;
@@ -41,7 +31,11 @@ public class Timer2 : MonoBehaviour
             else
             {
                 timeText.text = "Your time is up!";
-                finalScore.text = "Final Score: " + DuckGameScoreKeeper.score.ToString();
+                if (ShootingTowerScore.score >= 50)
+                {
+                    gift.gameObject.SetActive(true);
+                }
+                finalScore.text = "Final Score: " + ShootingTowerScore.score.ToString();
                 ShootingTowerScore.score = 0;
                 timeRemaining = timeRemainingTemp;
             }

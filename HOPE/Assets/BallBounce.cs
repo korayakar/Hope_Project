@@ -9,6 +9,7 @@ public class BallBounce : MonoBehaviour
     public float damping = 0.8f;
     private Vector3 velocity;
 
+
     private void OnCollisionEnter(Collision collision)
     {
         // Check if the collision is with the ground
@@ -20,9 +21,11 @@ public class BallBounce : MonoBehaviour
             // Apply the bounce force to the ball
             GetComponent<Rigidbody>().AddForce(bounceDirection * bounceForce, ForceMode.Impulse);
 
-            // Apply damping to reduce subsequent bounces
             velocity *= damping;
+
         }
+     
+
     }
 
     private void FixedUpdate()
